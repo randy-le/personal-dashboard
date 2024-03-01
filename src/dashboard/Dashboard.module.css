@@ -1,0 +1,12 @@
+.dashboard {
+    width: 70%;
+    height: 35%;
+
+    max-width: 1200px;
+    max-height: 500px;
+
+    backdrop-filter: blur(16px);
+    background-color: hsla(0, 0%, 100%, .50);
+    border-radius: 15px;
+    box-shadow: 0 0 1rem 0 rgba(0,0,0,.5);
+}

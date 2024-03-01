@@ -1,0 +1,27 @@
+div.profile {
+    height: 100%;
+    width: 100%;
+}
+
+img.profilePicture {
+    border-radius: 50%;
+    max-width: 300px;
+    max-height: 300px;
+    margin-bottom: 30px;
+}
+
+span.chip {
+    padding: 15px;
+    color: black;
+    background-image: linear-gradient(0deg, rgb(198, 198, 198, 0.8) 0%, rgb(241, 241, 241, 0.8) 31.25%, rgb(255, 255, 255, 0.8));
+    cursor: default;
+}
+
+span.nameChip {
+    margin-right: 3px;
+    border-radius: 15px 0 0 15px;
+}
+
+span.emailChip {
+    border-radius: 0  15px 15px 0;
+}

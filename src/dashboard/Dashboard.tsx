@@ -1,38 +1,38 @@
 import { useState } from 'react';
 import Profile from '../profile/Profile';
-import logo from './../logo.svg';
-import classes from './Dashboard.module.css';
+import css from './Dashboard.module.css';
 import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom';
+import Todos from '../todos/Todos';
 
 export function Dashboard () {
     let [ active, setActive ] = useState( `` );
 
     return (
         <BrowserRouter>
-            <div className={ classes.dashboard }>
+            <div className={ css.dashboard }>
                 <Routes>
                     <Route path="/" element={ renderProfile() } />
                     <Route path="/todos" element={ renderTodos() }/ >
                     <Route path="/weather" element={ renderWeather() }/>
                 </Routes>
             </div>
-            <div className={ classes.navigationMenu }>
+            <div className={ css.navigationMenu }>
                 <Link 
-                    className={ classes.link + ` ${active === `` ? classes.active : `` }` }
+                    className={ css.link + ` ${active === `` ? css.active : `` }` }
                     to="/"
                     onClick={ () => { setActive( `` ) } }
                 >
                     Profile
                     </Link>
                 <Link 
-                    className={ classes.link + ` ${active === `todos` ? classes.active : `` }` }
+                    className={ css.link + ` ${active === `todos` ? css.active : `` }` }
                     to="/todos"
                     onClick={ () => { setActive( `todos` ) } }
                 >
-                    About
+                    To-Dos
                 </Link>
                 <Link 
-                    className={ classes.link + ` ${active === `weather` ? classes.active : `` }` }
+                    className={ css.link + ` ${active === `weather` ? css.active : `` }` }
                     to="/weather"
                     onClick={ () => { setActive( `weather` ) } }
                 >
@@ -46,7 +46,7 @@ export function Dashboard () {
 function renderProfile () {
     return (
         <Profile
-            profilePicture='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+            profilePicture='https://www.headshotpro.com/avatar-results/danny-1.webp'
             name='First Last'
             email='Email'
         />
@@ -55,10 +55,7 @@ function renderProfile () {
 
 function renderTodos () {
     return (
-        <Profile
-            profilePicture='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-            name='First Last'
-            email='Email'
+        <Todos
         />
     );
 }
@@ -66,7 +63,7 @@ function renderTodos () {
 function renderWeather () {
     return (
         <Profile
-            profilePicture='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+            profilePicture='https://www.headshotpro.com/avatar-results/danny-1.webp'
             name='First Last'
             email='Email'
         />

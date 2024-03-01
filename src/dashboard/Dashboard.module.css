@@ -1,12 +1,9 @@
 .dashboard {
-    width: 70%;
-    height: 35%;
+    width: 800px;
+    height: 600px;
 
-    min-width: 800px;
-    min-height: 500px;
-
-    max-width: 1200px;
-    max-height: 500px;
+    padding: 30px;
+    box-sizing: border-box;
 
     display: flex;
     justify-content: center;
@@ -21,15 +18,42 @@
 .navigationMenu {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: center;
 
-    height: 10%;
-    width: 70%;
-    min-width: 800px;
-    max-width: 1200px;
+    width: 100%;
 
     margin-top: 15px;
 }
+
+@media only screen and (max-width: 800px) {
+    .dashboard {
+        width: 600px;
+        height: 600px;
+    }
+
+    .navigationMenu {
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .dashboard {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media only screen and (max-height: 700px) {
+    .dashboard {
+        width: 400px;
+        height: 400px;
+    }
+
+    .link {
+        height: fit-content
+    }
+}
+
 
 .link {
     transition: transform .5s ease-in-out;

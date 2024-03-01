@@ -1,0 +1,79 @@
+div.todos {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    width: 100%;
+}
+
+div.todoInput {
+    display: flex;
+    flex-direction: row;
+}
+
+input.input {
+    flex: 1;
+    height: 45px;
+    font-size: 24px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    padding-left: 12px;
+    margin-right:3px;
+}
+
+button.add {
+    width: 60px;
+    background-image: linear-gradient(0deg, rgb(198, 198, 198, 0.8) 0%, rgb(241, 241, 241, 0.8) 31.25%, rgb(255, 255, 255, 0.8));
+    border: 1px solid grey;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+div.todoList {
+    flex: 1;
+    overflow: auto;
+    margin-top: 15px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+div.todo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding-left: 15px;
+    padding-right: 15px;
+
+    height: 50px;
+
+    color: black;
+    transition: ease-in-out 0.1s;
+    /* cursor: pointer; */
+
+    &:first-child {
+        border-radius: 15px 15px 0 0;
+    }
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+}
+
+div.todoText {
+    display: flex;
+    flex: 1;
+
+    padding-left: 15px;
+}
+
+svg.delete {
+    cursor: pointer;
+
+    &:hover {
+        path {
+            color: red;
+        }
+    }
+}
+

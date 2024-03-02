@@ -11,29 +11,29 @@ export function Dashboard () {
         <BrowserRouter>
             <div className={ css.dashboard }>
                 <Routes>
-                    <Route path="/" element={ renderProfile() } />
-                    <Route path="/todos" element={ renderTodos() }/ >
-                    <Route path="/weather" element={ renderWeather() }/>
+                    <Route path="/personal-dashboard" element={ renderProfile() } />
+                    <Route path="/personal-dashboard/todos" element={ renderTodos() }/ >
+                    <Route path="/personal-dashboard/weather" element={ renderWeather() }/>
                 </Routes>
             </div>
             <div className={ css.navigationMenu }>
                 <Link 
                     className={ css.link + ` ${active === `` ? css.active : `` }` }
-                    to="/"
+                    to="/personal-dashboard"
                     onClick={ () => { setActive( `` ) } }
                 >
                     Profile
                     </Link>
                 <Link 
                     className={ css.link + ` ${active === `todos` ? css.active : `` }` }
-                    to="/todos"
+                    to="/personal-dashboard/todos"
                     onClick={ () => { setActive( `todos` ) } }
                 >
                     To-Dos
                 </Link>
                 <Link 
                     className={ css.link + ` ${active === `weather` ? css.active : `` }` }
-                    to="/weather"
+                    to="/personal-dashboard/weather"
                     onClick={ () => { setActive( `weather` ) } }
                 >
                     Users

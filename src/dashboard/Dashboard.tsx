@@ -1,17 +1,29 @@
 import { useState } from 'react';
 import Profile from '../profile/Profile';
 import css from './Dashboard.module.css';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import Todos from '../todos/Todos';
 import { TodosContext } from '../context/TodosContext';
 import { data } from '../todos/TodosData';
+import Weather from '../weather/Weather';
 
 export function Dashboard () {
-    const [ active, setActive ] = useState( `` );
+    // get active page from url
+    let activePage = ``;
+    switch ( useLocation().pathname ) {
+        case `/personal-dashboard/todos`:
+            activePage = `todos`;
+            break;
+        case `/personal-dashboard/weather`:
+            activePage = `weather`;
+            break;
+    }
+
+    const [ active, setActive ] = useState( activePage );
     const [ todos, setTodos ] = useState( data );
 
     return (
-        <BrowserRouter>
+        <>
             <div className={ css.dashboard }>
                 <Routes>
                     <Route 
@@ -35,11 +47,7 @@ export function Dashboard () {
                     <Route 
                         path="/personal-dashboard/weather" 
                         element={ 
-                            <Profile
-                                profilePicture='https://www.headshotpro.com/avatar-results/danny-1.webp'
-                                name='First Last'
-                                email='Email'
-                            /> 
+                            <Weather/>
                         }
                     />
                 </Routes>
@@ -67,6 +75,6 @@ export function Dashboard () {
                     Weather
                 </Link>
             </div>
-        </BrowserRouter>
+        </>    
     );
 }

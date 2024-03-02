@@ -71,7 +71,7 @@ export default function Weather () {
     }
 
     function getLatLon( location: string ) {
-        fetch( `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${apiKey}` )
+        fetch( `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${apiKey}` )
         .then( resp => resp.json() ).then( data => {
             if ( Array.isArray( data ) && data.length > 0 ) {
                 const { lat, lon } = data[ 0 ];

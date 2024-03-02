@@ -1,19 +1,47 @@
 import { useState } from 'react';
 import Profile from '../profile/Profile';
 import css from './Dashboard.module.css';
-import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Todos from '../todos/Todos';
+import { TodosContext } from '../context/TodosContext';
+import { data } from '../todos/TodosData';
 
 export function Dashboard () {
-    let [ active, setActive ] = useState( `` );
+    const [ active, setActive ] = useState( `` );
+    const [ todos, setTodos ] = useState( data );
 
     return (
         <BrowserRouter>
             <div className={ css.dashboard }>
                 <Routes>
-                    <Route path="/personal-dashboard" element={ renderProfile() } />
-                    <Route path="/personal-dashboard/todos" element={ renderTodos() }/ >
-                    <Route path="/personal-dashboard/weather" element={ renderWeather() }/>
+                    <Route 
+                        path="/personal-dashboard" 
+                        element={ 
+                            <Profile
+                                profilePicture='https://www.headshotpro.com/avatar-results/danny-1.webp'
+                                name='First Last'
+                                email='Email'
+                            /> 
+                        } 
+                    />
+                    <Route 
+                        path="/personal-dashboard/todos" 
+                        element={ 
+                            <TodosContext.Provider value={ { todos, setTodos } }>
+                                <Todos/>
+                            </TodosContext.Provider>
+                        }
+                    />
+                    <Route 
+                        path="/personal-dashboard/weather" 
+                        element={ 
+                            <Profile
+                                profilePicture='https://www.headshotpro.com/avatar-results/danny-1.webp'
+                                name='First Last'
+                                email='Email'
+                            /> 
+                        }
+                    />
                 </Routes>
             </div>
             <div className={ css.navigationMenu }>
@@ -36,36 +64,9 @@ export function Dashboard () {
                     to="/personal-dashboard/weather"
                     onClick={ () => { setActive( `weather` ) } }
                 >
-                    Users
+                    Weather
                 </Link>
             </div>
         </BrowserRouter>
-    );
-}
-
-function renderProfile () {
-    return (
-        <Profile
-            profilePicture='https://www.headshotpro.com/avatar-results/danny-1.webp'
-            name='First Last'
-            email='Email'
-        />
-    );
-}
-
-function renderTodos () {
-    return (
-        <Todos
-        />
-    );
-}
-
-function renderWeather () {
-    return (
-        <Profile
-            profilePicture='https://www.headshotpro.com/avatar-results/danny-1.webp'
-            name='First Last'
-            email='Email'
-        />
     );
 }

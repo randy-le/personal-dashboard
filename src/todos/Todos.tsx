@@ -1,34 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import css from './Todos.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-let toDoList = [ 
-    {
-        id: 1,
-        checked: true,
-        text: "Hello",
-    },
-    {
-        id: 2,
-        checked: false,
-        text: "Bonjour",
-    },
-    {
-        id: 3,
-        checked: true,
-        text: "Good Bye",
-    },
-    {
-        id: 4,
-        checked: true,
-        text: "Au Revoir",
-    }
-]
+import { TodosContext } from '../context/TodosContext';
 
 export default function Todos () {
-    let [ id, setId ] = useState( toDoList.length + 1 );
+    const { todos, setTodos } = useContext( TodosContext );
+    
+    let [ id, setId ] = useState( todos.length + 1 );
     let [ todoText, setTodoText ] = useState( `` );
-    let [ todoList, setTodoList ] = useState( toDoList )
 
     return (
         <div className={ css.todos }>
@@ -43,7 +22,7 @@ export default function Todos () {
                 <button className={ css.add } onClick={ addTodo } >+</button>
             </div>
             <div className={ css.todoList }>
-                { todoList.map( todo =>
+                { todos.map( todo =>
                     <Todo 
                         id={ todo.id } 
                         checked={ todo.checked } 
@@ -74,12 +53,12 @@ export default function Todos () {
                 text: todoText,
             }
 
-            setTodoList( [ ...todoList, newTodo ] )
+            setTodos( [ ...todos, newTodo ] )
         }
     }
 
     function handleCheck( id: number ) {
-        const newTodoList = todoList.map( todo => {
+        const newTodoList = todos.map( todo => {
             if ( todo.id === id ) {
                 return { ...todo, checked: !todo.checked };
             } else {
@@ -87,12 +66,12 @@ export default function Todos () {
             }
         } )
 
-        setTodoList( newTodoList );
+        setTodos( newTodoList );
     }
 
     function handleDelete( id: number ) {
-        const newTodoList = todoList.filter( todo => todo.id !== id );
-        setTodoList( newTodoList );
+        const newTodoList = todos.filter( todo => todo.id !== id );
+        setTodos( newTodoList );
     }
 }
 

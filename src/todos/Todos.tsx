@@ -4,8 +4,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { TodosContext } from '../context/TodosContext';
 
 export default function Todos () {
+    // import TodosContext for use
     const { todos, setTodos } = useContext( TodosContext );
     
+    // just using a simple counter for this to generate unique ids
     let [ id, setId ] = useState( todos.length + 1 );
     let [ todoText, setTodoText ] = useState( `` );
 
@@ -36,12 +38,14 @@ export default function Todos () {
         </div>
     );
 
+    // handle key events. only enter in this case
     function handleKeyDown ( event: any ) {
         if ( event.key === 'Enter' ) {
             addTodo();
         }
     }
 
+    // Add the todo to the list. Construct the todo object first
     function addTodo() {
         if ( todoText ) {
             setTodoText( `` );
@@ -57,6 +61,7 @@ export default function Todos () {
         }
     }
 
+    // Check the todo. First find the todo, reverse the value, and then update the list
     function handleCheck( id: number ) {
         const newTodoList = todos.map( todo => {
             if ( todo.id === id ) {
@@ -69,6 +74,7 @@ export default function Todos () {
         setTodos( newTodoList );
     }
 
+    // Remove a todo
     function handleDelete( id: number ) {
         const newTodoList = todos.filter( todo => todo.id !== id );
         setTodos( newTodoList );

@@ -49,14 +49,14 @@ div.weather {
     
                 label {
                     text-align: end;
-                    flex: 1;
+                    flex: 5;
                     font-weight: bold;
                     margin-right: 15px;
                 }
     
                 span {
                     text-align: start;
-                    flex: 1;
+                    flex: 4;
                 }
             }
         }

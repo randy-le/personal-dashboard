@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Profile from '../profile/Profile';
 import css from './Dashboard.module.css';
-import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Todos from '../todos/Todos';
 import { TodosContext } from '../context/TodosContext';
 import { data } from '../todos/TodosData';

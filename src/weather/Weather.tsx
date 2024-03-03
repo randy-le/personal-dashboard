@@ -28,9 +28,11 @@ interface WeatherData {
 
 export default function Weather () {
     const [ loading, setLoading ] = useState( true );
+    const [ weatherData, setWeatherData ] = useState<WeatherData | null>( null );
+
+    // debounce the input so we don't make an API call every time the input changes
     const debouncedHandleLocationChange = debounce( handleLocationChange, 500 );
 
-    const [ weatherData, setWeatherData ] = useState<WeatherData | null>( null );
     // on mount, fetch calgary lat and lon
     useEffect( () => {
         getLatLon( `Calgary` );
@@ -70,6 +72,7 @@ export default function Weather () {
         )
     }
 
+    // get lat and lon based on location and then use the info to get the weather data
     function getLatLon( location: string ) {
         fetch( `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${apiKey}` )
         .then( resp => resp.json() ).then( data => {
@@ -84,6 +87,7 @@ export default function Weather () {
         } )
     }
 
+    // get weather data based on lat and lon, and then update the view by setting weather data
     function getCurrentWeather( lat: number, lon: number ) {
         fetch( `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric` )
         .then( resp => resp.json() ).then( ( data: WeatherData ) => {
@@ -93,6 +97,7 @@ export default function Weather () {
         } )
     }
 
+    // handle input change. Send a request to get new lat and lon values
     function handleLocationChange ( location: string )  {
         if ( location )  {
             setLoading( true );
